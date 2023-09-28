@@ -1,9 +1,11 @@
-import * as React from 'react'
 import { graphql, Link } from 'gatsby';
 import Layout from '../../components/layout';
 import Seo from '../../components/seo';
+import example from '../../images/example.png';
 
-const BlogPage = ({ data }) => {
+const BlogPage = ({ location, data }) => {
+  console.log(location)
+
   return (
     <Layout pageTitle="My Blog Posts">
       { data.allMdx.nodes.map(node => (
@@ -15,6 +17,7 @@ const BlogPage = ({ data }) => {
           </h2>
           <p>Posted: { node.frontmatter.date }</p>
           <p>{ node.excerpt }</p>
+          <img src={ example } alt="Logo"/>
         </article>
       )) }
     </Layout>

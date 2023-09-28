@@ -1,40 +1,24 @@
-/**
- * SEO component that queries for data with
- * Gatsby's useStaticQuery React hook
- *
- * See: https://www.gatsbyjs.com/docs/how-to/querying-data/use-static-query/
- */
-
-import * as React from 'react'
-import { graphql, useStaticQuery } from 'gatsby'
+import { useSiteMetadata } from '../hooks/use-site-metadata';
 
 const Seo = ({ description, title, children }) => {
-  const { site: { siteMetadata } } = useStaticQuery(graphql`
-      query {
-          site {
-              siteMetadata {
-                  title
-                  description
-                  author
-              }
-          }
-      }
-  `)
+  const { title: metaTitle, description: metaDescription, author, siteUrl, image } = useSiteMetadata()
 
-  const metaDescription = description || siteMetadata.description
-  const defaultTitle = siteMetadata?.title
+  const resultDescription = description || metaDescription
 
   return (
     <>
-      <title>{ defaultTitle ? `${ title } | ${ defaultTitle }` : title }</title>
-      <meta name="description" content={ metaDescription }/>
+      <title>{ metaTitle ? `${ title } | ${ metaTitle }` : title }</title>
+      <meta name="description" content={ resultDescription }/>
+      <meta name="image" content={ image }/>
       <meta property="og:title" content={ title }/>
-      <meta property="og:description" content={ metaDescription }/>
+      <meta property="og:description" content={ resultDescription }/>
       <meta property="og:type" content="website"/>
-      <meta name="twitter:card" content="summary"/>
-      <meta name="twitter:creator" content={ siteMetadata?.author || `` }/>
+      <meta name="twitter:card" content="summary_large_image"/>
       <meta name="twitter:title" content={ title }/>
-      <meta name="twitter:description" content={ metaDescription }/>
+      <meta name="twitter:url" content={ siteUrl }/>
+      <meta name="twitter:description" content={ resultDescription }/>
+      <meta name="twitter:image" content={ image }/>
+      <meta name="twitter:creator" content={ author || `` }/>
       { children }
     </>
   )

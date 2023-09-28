@@ -8,11 +8,16 @@
  * @type {import('gatsby').GatsbyConfig}
  */
 module.exports = {
+  flags: {
+    DEV_SSR: true,
+  },
+  jsxRuntime: 'automatic',
   siteMetadata: {
-    title: `My First Gatsby Site`,
-    description: `Kick off your next, great Gatsby project with this default starter. This barebones starter ships with the main Gatsby configuration files you might need.`,
-    author: `@gatsbyjs`,
+    title: `Leon Test Site`,
+    description: `This is a description used inside meta tags`,
+    author: `Leon Laade`,
     siteUrl: `https://gatsbystarterdefaultsource.gatsbyjs.io/`,
+    image: 'src/images/gatsby-icon.png',
   },
   plugins: [
     `gatsby-plugin-image`,
@@ -30,7 +35,25 @@ module.exports = {
         path: `${ __dirname }/blog`,
       },
     },
-    `gatsby-plugin-sharp`,
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `locale`,
+        path: `${ __dirname }/locales`,
+      },
+    },
+    {
+      resolve: 'gatsby-plugin-sharp',
+      placeholder: 'gray',
+      quality: 50,
+      breakpoints: [750, 1080, 1366, 1920],
+      backgroundColor: `transparent`,
+      blurredOptions: {},
+      jpgOptions: {},
+      pngOptions: {},
+      webpOptions: {},
+      avifOptions: {},
+    },
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
@@ -48,5 +71,21 @@ module.exports = {
     'gatsby-plugin-postcss',
     'gatsby-plugin-mdx',
     `gatsby-transformer-sharp`,
+    {
+      resolve: 'gatsby-plugin-react-i18next',
+      options: {
+        localeJsonSourceName: 'locale',
+        languages: ['en', 'de'],
+        defaultLanguage: 'de',
+        siteUrl: 'http://localhost:8000/',
+        i18nextOptions: {
+          interpolation: {
+            escapeValue: false,
+          },
+          keySeparator: false,
+          nsSeparator: false,
+        },
+      },
+    },
   ],
 }

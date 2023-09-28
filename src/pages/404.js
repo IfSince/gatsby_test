@@ -1,4 +1,3 @@
-import * as React from 'react'
 import { useEffect } from 'react'
 import Seo from '../components/seo'
 import { navigate } from 'gatsby';
