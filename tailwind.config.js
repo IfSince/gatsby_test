@@ -2,6 +2,7 @@ const defaultTheme = require('tailwindcss/defaultTheme')
 
 /** @type {import('tailwindcss').Config} */
 module.exports = {
+  darkMode: 'class',
   content: [
     './src/pages/**/*.{js,jsx,ts,tsx}',
     './src/templates/**/*.{js,jsx,ts,tsx}',
@@ -10,7 +11,11 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        'sans': ['Kollektif', ...defaultTheme.fontFamily.sans],
+        'sans': ['Futura PT', ...defaultTheme.fontFamily.sans],
+      },
+      colors: {
+        'off-white': '#FAF9F6',
+        'custom-gray': '#2F3035',
       },
     },
   },

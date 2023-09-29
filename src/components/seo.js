@@ -19,6 +19,7 @@ const Seo = ({ description, title, children }) => {
       <meta name="twitter:description" content={ resultDescription }/>
       <meta name="twitter:image" content={ image }/>
       <meta name="twitter:creator" content={ author || `` }/>
+      <link rel="preload" href="https://use.typekit.net/opb8ouk.css" as="style" crossOrigin="anonymous"/>
       { children }
     </>
   )
