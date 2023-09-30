@@ -1,5 +1,4 @@
-import { Link } from 'gatsby';
-import { useI18next } from 'gatsby-plugin-react-i18next';
+import { Link, useI18next } from 'gatsby-plugin-react-i18next';
 
 export const LanguageSwitcher = () => {
   const { languages, originalPath } = useI18next()

@@ -2,6 +2,7 @@ import { Link } from 'gatsby';
 import { MenuItem } from './menu-item';
 import { LanguageSwitcher } from '../shared/language-switcher';
 import { DarkModeToggle } from '../shared/dark-mode-toggle';
+import { Trans } from 'react-i18next';
 
 const MENU_ITEMS = [
   { link: '/', description: 'Product' },
@@ -23,7 +24,7 @@ export const Menu = () => {
         <DarkModeToggle/>
 
         <Link className=""
-              to="/">Get in Touch</Link>
+              to="/"><Trans>Get in Touch</Trans></Link>
       </div>
     </nav>
   )
