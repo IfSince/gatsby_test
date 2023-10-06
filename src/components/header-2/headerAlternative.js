@@ -1,8 +1,8 @@
 import { Link } from 'gatsby'
-import { Menu } from './menu/menu';
 import { motion } from 'framer-motion';
+import { Menu } from '../menu/menu';
 
-const Header = ({ siteTitle }) => (
+const HeaderAlternative = ({ siteTitle }) => (
 
   <header className="fixed top-0 left-0 w-full px-6 pt-6">
     <motion.div className="h-auto rounded-2xl bg-off-white dark:bg-custom-gray"
@@ -20,4 +20,4 @@ const Header = ({ siteTitle }) => (
   </header>
 )
 
-export default Header
+export default HeaderAlternative

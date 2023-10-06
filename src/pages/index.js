@@ -1,30 +1,36 @@
 import Layout from '../components/layout';
-import { StaticImage } from 'gatsby-plugin-image';
 import Seo from '../components/seo';
-import { Trans, useTranslation } from 'react-i18next';
+import { useTranslation } from 'react-i18next';
 import { graphql } from 'gatsby';
-import { Link, useI18next } from 'gatsby-plugin-react-i18next';
+import { motion } from 'framer-motion';
 
 const IndexPage = () => {
-  const { languages, originalPath } = useI18next()
   const { t } = useTranslation()
 
   return (
     <Layout pageTitle={ t('Home Page') }>
-      <p>I'm making this by following the Gatsby Tutorial.</p>
-      <p><Trans>This gets translated</Trans></p>
-      <ul className="languages">
-        { languages.map((lng) => (
-          <li key={ lng }>
-            <Link to={ originalPath } language={ lng }>
-              { lng }
-            </Link>
-          </li>
-        )) }
-      </ul>
-
-      <StaticImage src="../images/example.png"
-                   alt="Alt Image Text"/>
+      <div className="flex h-screen w-full items-end bg-gray-400 p-20">
+        <motion.h1 className="relative text-8xl font-bold"
+                   initial={ { y: 100, opacity: 0 } }
+                   whileInView={ { y: 0, opacity: 1 } }
+                   viewport={ { once: true } }
+                   transition={ {
+                     type: 'spring', duration: 0.1, damping: 100, stiffness: 500, delay: 0.5,
+                   } }>
+          Parallax
+        </motion.h1>
+      </div>
+      <div className="flex h-screen w-full p-20 bg-gray-200">
+        <motion.h1 className="relative text-8xl font-bold"
+                   initial={ { y: 100, opacity: 0 } }
+                   whileInView={ { y: 0, opacity: 1 } }
+                   viewport={ { once: true } }
+                   transition={ {
+                     type: 'spring', duration: 0.1, damping: 100, stiffness: 500, delay: 0.2,
+                   } }>
+          Parallax
+        </motion.h1>
+      </div>
     </Layout>
   )
 }
